@@ -220,9 +220,8 @@ public class Kalkulator extends javax.swing.JFrame {
             case 6:
                ms_rodzajDzialania = " pierwiastek ";
                ms_WprowadzonaLiczba1 = Integer.parseInt(ms_jTextFieldInput.getText());
-               ms_WprowadzonaLiczba2 = Integer.parseInt(ms_jTextFieldInput2.getText());
-               ms_wynik = (int) Math.sqrt(ms_WprowadzonaLiczba1);
-               ms_jTextFieldInput.setText(String.valueOf(ms_wynik));
+               ms_wynik  = (int) Math.sqrt(ms_WprowadzonaLiczba1);
+               ms_jTextFieldOutput.setText(String.valueOf(ms_wynik));
                zapiszdzialanie();
                break;
             case 7:

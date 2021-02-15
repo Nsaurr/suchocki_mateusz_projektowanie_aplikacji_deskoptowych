@@ -1,1 +1,8 @@
 2+2=4
+2-1=1
+21*1=21
+22/2=11
+22*2=484
+9 pierwiastek 0=0
+9 pierwiastek 0=0
+9 pierwiastek 0=3
