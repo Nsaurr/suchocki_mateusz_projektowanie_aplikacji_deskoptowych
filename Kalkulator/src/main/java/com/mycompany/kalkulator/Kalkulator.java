@@ -11,6 +11,7 @@ import java.io.IOException;
 import static java.lang.Integer.parseInt;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import javax.swing.JOptionPane;
 
 /**
@@ -262,7 +263,9 @@ public class Kalkulator extends javax.swing.JFrame {
         String ms_data = JOptionPane.showInputDialog("Wprowadź datę w formacie dd mm yyyy np: 01 02 2021");
         LocalDate ldnow = LocalDate.now();
         LocalDate ldinput = LocalDate.parse(ms_data, formatter);
-        System.out.print(ldnow+" "+ldinput);
+        //System.out.print(ldnow+" "+ldinput);
+        long days = ChronoUnit.DAYS.between(ldinput, ldnow);
+        System.out.print("Ilosc dni pomiedzy datami: "+days);
     }//GEN-LAST:event_jCheckBoxMenuItemHowMuchDaysActionPerformed
 
     /**
