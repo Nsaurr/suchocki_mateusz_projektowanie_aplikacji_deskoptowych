@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import static java.lang.Integer.parseInt;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 
@@ -258,8 +259,10 @@ public class Kalkulator extends javax.swing.JFrame {
 
     private void jCheckBoxMenuItemHowMuchDaysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItemHowMuchDaysActionPerformed
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
-        JOptionPane.showInputDialog("Wprowadź datę w formacie dd mm yyyy np: 01 02 2021");
-        
+        String ms_data = JOptionPane.showInputDialog("Wprowadź datę w formacie dd mm yyyy np: 01 02 2021");
+        LocalDate ldnow = LocalDate.now();
+        LocalDate ldinput = LocalDate.parse(ms_data, formatter);
+        System.out.print(ldnow+" "+ldinput);
     }//GEN-LAST:event_jCheckBoxMenuItemHowMuchDaysActionPerformed
 
     /**
