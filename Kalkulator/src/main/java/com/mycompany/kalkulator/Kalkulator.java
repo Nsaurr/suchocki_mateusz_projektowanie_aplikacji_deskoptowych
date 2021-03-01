@@ -57,6 +57,8 @@ public class Kalkulator extends javax.swing.JFrame {
         ms_jMenuFile = new javax.swing.JMenu();
         ms_jCheckBoxMenuItemSaveHistory = new javax.swing.JCheckBoxMenuItem();
         ms_jMenuItemExit = new javax.swing.JMenuItem();
+        jMenuTools = new javax.swing.JMenu();
+        jCheckBoxMenuItemHowMuchDays = new javax.swing.JCheckBoxMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Kalkulator");
@@ -151,6 +153,14 @@ public class Kalkulator extends javax.swing.JFrame {
         ms_jMenuFile.add(ms_jMenuItemExit);
 
         ms_jMenuBar.add(ms_jMenuFile);
+
+        jMenuTools.setText("Narzędzia");
+
+        jCheckBoxMenuItemHowMuchDays.setSelected(true);
+        jCheckBoxMenuItemHowMuchDays.setText("Ile dni pomiędzy datami");
+        jMenuTools.add(jCheckBoxMenuItemHowMuchDays);
+
+        ms_jMenuBar.add(jMenuTools);
 
         setJMenuBar(ms_jMenuBar);
 
@@ -282,7 +292,9 @@ public class Kalkulator extends javax.swing.JFrame {
     int ms_wynik;
     File fileDzialania  = new File("dzialania.txt");
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItemHowMuchDays;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenu jMenuTools;
     private javax.swing.JButton ms_jButtonCalculate;
     private javax.swing.JCheckBoxMenuItem ms_jCheckBoxMenuItemSaveHistory;
     private javax.swing.JComboBox<String> ms_jComboBox;
