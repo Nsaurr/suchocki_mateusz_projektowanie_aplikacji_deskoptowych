@@ -9,6 +9,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import static java.lang.Integer.parseInt;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -158,6 +160,11 @@ public class Kalkulator extends javax.swing.JFrame {
 
         jCheckBoxMenuItemHowMuchDays.setSelected(true);
         jCheckBoxMenuItemHowMuchDays.setText("Ile dni pomiędzy datami");
+        jCheckBoxMenuItemHowMuchDays.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItemHowMuchDaysActionPerformed(evt);
+            }
+        });
         jMenuTools.add(jCheckBoxMenuItemHowMuchDays);
 
         ms_jMenuBar.add(jMenuTools);
@@ -248,6 +255,12 @@ public class Kalkulator extends javax.swing.JFrame {
     private void ms_jTextFieldInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ms_jTextFieldInputActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ms_jTextFieldInputActionPerformed
+
+    private void jCheckBoxMenuItemHowMuchDaysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItemHowMuchDaysActionPerformed
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
+        JOptionPane.showInputDialog("Wprowadź datę w formacie dd mm yyyy np: 01 02 2021");
+        
+    }//GEN-LAST:event_jCheckBoxMenuItemHowMuchDaysActionPerformed
 
     /**
      * @param args the command line arguments
