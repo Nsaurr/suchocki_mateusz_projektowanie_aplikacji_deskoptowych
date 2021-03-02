@@ -261,11 +261,13 @@ public class Kalkulator extends javax.swing.JFrame {
     private void jCheckBoxMenuItemHowMuchDaysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItemHowMuchDaysActionPerformed
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
         String ms_data = JOptionPane.showInputDialog("Wprowadź datę w formacie dd mm yyyy np: 01 02 2021");
+        if(ms_data != null && ms_data.length() == 10){
         LocalDate ldnow = LocalDate.now();
         LocalDate ldinput = LocalDate.parse(ms_data, formatter);
         //System.out.print(ldnow+" "+ldinput);
         long days = ChronoUnit.DAYS.between(ldinput, ldnow);
-        System.out.print("Ilosc dni pomiedzy datami: "+days);
+        JOptionPane.showMessageDialog(rootPane,""+days, "Ilosc Dni", HEIGHT);
+        }
     }//GEN-LAST:event_jCheckBoxMenuItemHowMuchDaysActionPerformed
 
     /**
