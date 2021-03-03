@@ -80,6 +80,11 @@ public class Lista_zakupow extends javax.swing.JFrame {
         ms_jLabelWeekCost.setText("Wydatki z tygodznia");
 
         ms_jButtonSave.setText("Zapisz");
+        ms_jButtonSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ms_jButtonSaveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout ms_jPanelInsertLayout = new javax.swing.GroupLayout(ms_jPanelInsert);
         ms_jPanelInsert.setLayout(ms_jPanelInsertLayout);
@@ -201,6 +206,10 @@ public class Lista_zakupow extends javax.swing.JFrame {
     private void ms_jTextFieldInsertValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ms_jTextFieldInsertValueActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ms_jTextFieldInsertValueActionPerformed
+
+    private void ms_jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ms_jButtonSaveActionPerformed
+        ms_jTextAreaTodayShopping.append("    Masło osełka 10.99 żywność\n");
+    }//GEN-LAST:event_ms_jButtonSaveActionPerformed
 
     /**
      * @param args the command line arguments
