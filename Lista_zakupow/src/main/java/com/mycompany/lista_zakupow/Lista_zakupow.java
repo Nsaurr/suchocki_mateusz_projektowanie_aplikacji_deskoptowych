@@ -5,6 +5,9 @@
  */
 package com.mycompany.lista_zakupow;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 /**
  *
  * @author Dzemor
@@ -16,6 +19,8 @@ public class Lista_zakupow extends javax.swing.JFrame {
      */
     public Lista_zakupow() {
         initComponents();
+        addKeyListnerToWhatDidYouBought();
+        addKeyListnerToInsertValue();
     }
 
     /**
@@ -242,6 +247,48 @@ public class Lista_zakupow extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Lista_zakupow().setVisible(true);
+            }
+        });
+    }
+    private void addKeyListnerToWhatDidYouBought(){
+        ms_jTextFieldInsertWhatDidYouBought.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+               if(e.getKeyChar() == KeyEvent.VK_ENTER){
+                   System.out.println("Wprowadzono dane po nacisniecu entera");
+                   ms_jTextAreaTodayShopping.setText(ms_jTextFieldInsertWhatDidYouBought.getText());
+               }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                
+            }
+        });
+    }
+    private void addKeyListnerToInsertValue(){
+        ms_jTextFieldInsertValue.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char ch = e.getKeyChar();
+                if(ch == '0'|| ch == '1' || ch == '2' || ch == '3' || ch == '4' || ch == '5' || ch == '6' || ch == '7' || ch == '8' || ch == '9'){
+                    System.out.println("Nacisnieto cyfre: "+ch);
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                
             }
         });
     }
