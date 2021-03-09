@@ -21,6 +21,7 @@ public class Lista_zakupow extends javax.swing.JFrame {
         initComponents();
         addKeyListnerToWhatDidYouBought();
         addKeyListnerToInsertValue();
+        addKeyListnerToInsertDate();
     }
 
     /**
@@ -276,8 +277,35 @@ public class Lista_zakupow extends javax.swing.JFrame {
             @Override
             public void keyTyped(KeyEvent e) {
                 char ch = e.getKeyChar();
-                if(ch == '0'|| ch == '1' || ch == '2' || ch == '3' || ch == '4' || ch == '5' || ch == '6' || ch == '7' || ch == '8' || ch == '9'){
-                    System.out.println("Nacisnieto cyfre: "+ch);
+                if(ch >= '0' && ch <= '9' || ch == KeyEvent.VK_BACK_SPACE ){
+                    ms_jTextFieldInsertValue.setEditable(true);
+                    //System.out.println("Nacisnieto cyfre: "+ch);
+                }else{
+                    ms_jTextFieldInsertValue.setEditable(false);
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                
+            }
+        });
+    }
+    private void addKeyListnerToInsertDate(){
+        ms_jTextFieldDateBought.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char ch = e.getKeyChar();
+                if(ch >= '0' && ch <= '9' || ch == KeyEvent.VK_BACK_SPACE ){
+                     ms_jTextFieldDateBought.setEditable(true);
+                    //System.out.println("Nacisnieto cyfre: "+ch);
+                }else{
+                     ms_jTextFieldDateBought.setEditable(false);
                 }
             }
 
