@@ -214,7 +214,10 @@ public class Lista_zakupow extends javax.swing.JFrame {
     }//GEN-LAST:event_ms_jTextFieldInsertValueActionPerformed
 
     private void ms_jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ms_jButtonSaveActionPerformed
-        ms_jTextAreaTodayShopping.append("    Masło osełka 10.99 żywność\n");
+        ms_jTextAreaTodayShopping.append(""+ms_jTextFieldInsertWhatDidYouBought.getText()+"; "+ms_jTextFieldInsertValue.getText()+"zł ; "+ms_jComboBoxBoughtType.getSelectedItem().toString()+" ; "+ms_jTextFieldDateBought.getText()+"\n");
+        ms_jTextFieldInsertWhatDidYouBought.setText("");
+        ms_jTextFieldInsertValue.setText("");
+        ms_jTextFieldDateBought.setText("");
     }//GEN-LAST:event_ms_jButtonSaveActionPerformed
 
     /**
@@ -255,9 +258,11 @@ public class Lista_zakupow extends javax.swing.JFrame {
         ms_jTextFieldInsertWhatDidYouBought.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
-               if(e.getKeyChar() == KeyEvent.VK_ENTER){
-                   System.out.println("Wprowadzono dane po nacisniecu entera");
-                   ms_jTextAreaTodayShopping.setText(ms_jTextFieldInsertWhatDidYouBought.getText());
+               char ch = e.getKeyChar();
+               if(ch == KeyEvent.VK_SPACE || ch >= 65 && ch <= 90 || ch == KeyEvent.VK_SHIFT || ch == KeyEvent.VK_CAPS_LOCK || ch == KeyEvent.VK_BACK_SPACE || ch >= 97 && ch <= 122){
+                   ms_jTextFieldInsertWhatDidYouBought.setEditable(true);
+               }else{
+                   ms_jTextFieldInsertWhatDidYouBought.setEditable(false);
                }
             }
 
@@ -301,7 +306,7 @@ public class Lista_zakupow extends javax.swing.JFrame {
             @Override
             public void keyTyped(KeyEvent e) {
                 char ch = e.getKeyChar();
-                if(ch >= '0' && ch <= '9' || ch == KeyEvent.VK_BACK_SPACE ){
+                if(ch >= '0' && ch <= '9' || ch == KeyEvent.VK_BACK_SPACE || ch == KeyEvent.VK_PERIOD || ch == KeyEvent.VK_SLASH ){
                      ms_jTextFieldDateBought.setEditable(true);
                     //System.out.println("Nacisnieto cyfre: "+ch);
                 }else{
