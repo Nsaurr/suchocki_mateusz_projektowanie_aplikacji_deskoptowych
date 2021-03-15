@@ -305,9 +305,15 @@ public class Lista_zakupow extends javax.swing.JFrame {
         ms_jTextFieldDateBought.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
+                String temp = ms_jTextFieldDateBought.getText();
                 char ch = e.getKeyChar();
-                if(ch >= '0' && ch <= '9' || ch == KeyEvent.VK_BACK_SPACE || ch == KeyEvent.VK_PERIOD || ch == KeyEvent.VK_SLASH ){
-                     ms_jTextFieldDateBought.setEditable(true);
+                if(ch >= '0' && ch <= '9' || ch == KeyEvent.VK_BACK_SPACE || ch == KeyEvent.VK_PERIOD || ch == KeyEvent.VK_SLASH && temp.length()<=10){
+                   ms_jTextFieldDateBought.setEditable(true);
+                    if((temp.length() == 4 || temp.length() == 7) && ch != KeyEvent.VK_BACK_SPACE ){
+                       ms_jTextFieldDateBought.setText(temp+"-");
+                    }else{
+                        ms_jTextFieldDateBought.setEditable(true);
+                    }
                     //System.out.println("Nacisnieto cyfre: "+ch);
                 }else{
                      ms_jTextFieldDateBought.setEditable(false);
