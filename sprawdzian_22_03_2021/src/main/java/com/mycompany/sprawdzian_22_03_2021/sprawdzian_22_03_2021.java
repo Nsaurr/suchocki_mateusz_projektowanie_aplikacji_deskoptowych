@@ -182,7 +182,7 @@ public class sprawdzian_22_03_2021 extends javax.swing.JFrame {
     private void zapisz(){
         try{
             FileWriter fw = new FileWriter(file, true);
-            fw.write(ms_jTextFieldModel.getText()+" - "+ms_jTextFieldPartialNumber.getText());
+            fw.write(ms_jTextFieldPartialNumber.getText()+" - "+ms_jTextFieldModel.getText());
             fw.close();
         }catch (IOException ex) {
             System.out.println("Blad: "+ex.toString());
