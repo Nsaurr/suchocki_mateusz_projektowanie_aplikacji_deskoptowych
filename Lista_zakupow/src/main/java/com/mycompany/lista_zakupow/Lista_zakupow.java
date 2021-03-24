@@ -22,6 +22,7 @@ public class Lista_zakupow extends javax.swing.JFrame {
         addKeyListnerToWhatDidYouBought();
         addKeyListnerToInsertValue();
         addKeyListnerToInsertDate();
+        addtoolTipsToElements();
     }
 
     /**
@@ -282,14 +283,25 @@ public class Lista_zakupow extends javax.swing.JFrame {
             @Override
             public void keyTyped(KeyEvent e) {
                 char ch = e.getKeyChar();
-                if(ch >= '0' && ch <= '9' || ch == KeyEvent.VK_BACK_SPACE ){
+                String temp = ms_jTextFieldInsertValue.getText();
+                String [] splitted = temp.split(",");
+                if(temp.contains(",")){
+                if(splitted[1].length()<=2){
+                if(ch >= '0' && ch <= '9' || ch == KeyEvent.VK_BACK_SPACE){
                     ms_jTextFieldInsertValue.setEditable(true);
                     //System.out.println("Nacisnieto cyfre: "+ch);
                 }else{
                     ms_jTextFieldInsertValue.setEditable(false);
                 }
+                }
+            }else{
+                    if(ch >= '0' && ch <= '9' || ch == KeyEvent.VK_BACK_SPACE || ch == ','){
+                        ms_jTextFieldInsertValue.setEditable(true);
+                    }else{
+                        ms_jTextFieldInsertValue.setEditable(false);
+                    }
+                }
             }
-
             @Override
             public void keyPressed(KeyEvent e) {
                 
@@ -300,6 +312,12 @@ public class Lista_zakupow extends javax.swing.JFrame {
                 
             }
         });
+    }
+    private void addtoolTipsToElements(){
+        ms_jTextFieldInsertWhatDidYouBought.setToolTipText("<html><h3>Wprowadz tekst</h3><p>Nie uzywaj polskich znakow</p></html>");
+        ms_jTextFieldInsertValue.setToolTipText("<html><h3>Wprowadz tekst</h3><p>Nie uzywaj polskich znakow oraz wprowadz wylacznie liczby</p></html>");
+        ms_jTextFieldDateBought.setToolTipText("<html><h3>Wprowadz date</h3><p>Uzywaj wylacznie cyfr i kropek</p></html>");
+        ms_jComboBoxBoughtType.setToolTipText("<html><h3>Wybierz rzecz</h3></html>");
     }
     private void addKeyListnerToInsertDate(){
         ms_jTextFieldDateBought.addKeyListener(new KeyListener() {
