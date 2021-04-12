@@ -307,7 +307,7 @@ public class Lista_zakupow extends javax.swing.JFrame {
         Scanner sc = new Scanner(produkty);
         String text = "";
         while(sc.hasNext()){
-            ms_jComboBoxBoughtType.addItem(sc.nextLine().replace(",", "\n"));
+            ms_jComboBoxBoughtType.addItem(sc.nextLine());
         }
         }catch(FileNotFoundException ex){
             System.out.println("Blad: "+ex);
