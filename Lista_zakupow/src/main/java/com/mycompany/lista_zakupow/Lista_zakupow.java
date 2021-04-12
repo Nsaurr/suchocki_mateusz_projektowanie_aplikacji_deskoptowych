@@ -7,6 +7,14 @@ package com.mycompany.lista_zakupow;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.sql.Savepoint;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,10 +27,14 @@ public class Lista_zakupow extends javax.swing.JFrame {
      */
     public Lista_zakupow() {
         initComponents();
+        final String ARTICLE_FILE = "article_type.csv";
+        FileUtils fu = new  FileUtils();
+        ms_jTextAreaTodayShopping.setText(fu.readFromFile());
         addKeyListnerToWhatDidYouBought();
         addKeyListnerToInsertValue();
         addKeyListnerToInsertDate();
         addtoolTipsToElements();
+        filljCBProducts();
     }
 
     /**
@@ -215,7 +227,17 @@ public class Lista_zakupow extends javax.swing.JFrame {
     }//GEN-LAST:event_ms_jTextFieldInsertValueActionPerformed
 
     private void ms_jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ms_jButtonSaveActionPerformed
+        FileUtils stf = new FileUtils();
+        String text = ms_jTextFieldInsertWhatDidYouBought.getText()+"; "+ms_jTextFieldInsertValue.getText()+"zł ; "+ms_jComboBoxBoughtType.getSelectedItem().toString()+" ; "+ms_jTextFieldDateBought.getText()+"\n";
         ms_jTextAreaTodayShopping.append(""+ms_jTextFieldInsertWhatDidYouBought.getText()+"; "+ms_jTextFieldInsertValue.getText()+"zł ; "+ms_jComboBoxBoughtType.getSelectedItem().toString()+" ; "+ms_jTextFieldDateBought.getText()+"\n");
+        stf.saveToFile(text);
+        try {
+            FileWriter fw = new FileWriter(file_name, true);
+            fw.write(ms_jTextAreaTodayShopping.getText()+"\n");
+            fw.close();
+        } catch (IOException ex) {
+            Logger.getLogger("Blad: "+ex.toString());
+        }
         ms_jTextFieldInsertWhatDidYouBought.setText("");
         ms_jTextFieldInsertValue.setText("");
         ms_jTextFieldDateBought.setText("");
@@ -278,6 +300,19 @@ public class Lista_zakupow extends javax.swing.JFrame {
             }
         });
     }
+    private void filljCBProducts(){
+        ArticleTypeUtils atu = new ArticleTypeUtils();
+        ms_jComboBoxBoughtType.removeAllItems();
+        try{
+        Scanner sc = new Scanner(produkty);
+        String text = "";
+        while(sc.hasNext()){
+            ms_jComboBoxBoughtType.addItem(sc.nextLine().replace(",", "\n"));
+        }
+        }catch(FileNotFoundException ex){
+            System.out.println("Blad: "+ex);
+        }
+    }
     private void addKeyListnerToInsertValue(){
         ms_jTextFieldInsertValue.addKeyListener(new KeyListener() {
             @Override
@@ -318,6 +353,10 @@ public class Lista_zakupow extends javax.swing.JFrame {
         ms_jTextFieldInsertValue.setToolTipText("<html><h3>Wprowadz tekst</h3><p>Nie uzywaj polskich znakow oraz wprowadz wylacznie liczby</p></html>");
         ms_jTextFieldDateBought.setToolTipText("<html><h3>Wprowadz date</h3><p>Uzywaj wylacznie cyfr i kropek</p></html>");
         ms_jComboBoxBoughtType.setToolTipText("<html><h3>Wybierz rzecz</h3></html>");
+        ms_jTextAreaTodayShopping.setToolTipText("<html><h3>Tu wyswietla sie twoje zakupy</h3></html>");
+        ms_jButtonSave.setToolTipText("<html><h3>Przycisk zapisu</h3></html>");
+        ms_jTextFieldTodayCost.setToolTipText("<html><h3>Suma dzisiejszych zakopow</h3></html>");
+        ms_jTextFieldWeekCost.setToolTipText("<html><h3>Suma zakopow z tygodnia</h3></html>");
     }
     private void addKeyListnerToInsertDate(){
         ms_jTextFieldDateBought.addKeyListener(new KeyListener() {
@@ -349,7 +388,9 @@ public class Lista_zakupow extends javax.swing.JFrame {
             }
         });
     }
-
+   private String file_name = "lista_zakupow.csv";
+   private String product_names = "product_names.csv";
+   private File produkty  = new File("produkty.txt");
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton ms_jButtonSave;
