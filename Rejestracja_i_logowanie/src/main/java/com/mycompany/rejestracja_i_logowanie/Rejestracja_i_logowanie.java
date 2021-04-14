@@ -29,25 +29,154 @@ public class Rejestracja_i_logowanie extends javax.swing.JFrame {
 
         ms_jTabbedPaneMain = new javax.swing.JTabbedPane();
         ms_jPanelRegister = new javax.swing.JPanel();
-        ms_jTabbedPaneLogin = new javax.swing.JTabbedPane();
+        ms_jLabelRegister = new javax.swing.JLabel();
+        ms_jLabelUsername = new javax.swing.JLabel();
+        ms_jTextFieldUsername = new javax.swing.JTextField();
+        ms_jLabeEmaill = new javax.swing.JLabel();
+        ms_jTextFieldEmail = new javax.swing.JTextField();
+        ms_jLabelConfirmPassword = new javax.swing.JLabel();
+        ms_jPasswordFieldPassword = new javax.swing.JPasswordField();
+        ms_jLabelPassword = new javax.swing.JLabel();
+        ms_jPasswordFieldConfirmPassword = new javax.swing.JPasswordField();
+        ms_jButtonRegister = new javax.swing.JButton();
+        ms_jPanelLogin = new javax.swing.JPanel();
+        ms_jLabelLogin = new javax.swing.JLabel();
+        ms_jLabelLoginEmail = new javax.swing.JLabel();
+        ms_jTextFieldLoginEmail = new javax.swing.JTextField();
+        ms_jLabelLoginPassword = new javax.swing.JLabel();
+        ms_jPasswordFieldLoginPassword = new javax.swing.JPasswordField();
+        ms_jButtonLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Rejestracja i logowanie");
         setResizable(false);
 
+        ms_jPanelRegister.setBackground(new java.awt.Color(255, 255, 255));
+
+        ms_jLabelRegister.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        ms_jLabelRegister.setText("Rejestracja");
+
+        ms_jLabelUsername.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ms_jLabelUsername.setText("Username");
+
+        ms_jLabeEmaill.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ms_jLabeEmaill.setText("Email");
+
+        ms_jLabelConfirmPassword.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ms_jLabelConfirmPassword.setText("Confirm password");
+
+        ms_jLabelPassword.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ms_jLabelPassword.setText("Password");
+
+        ms_jButtonRegister.setText("Rejetracja");
+        ms_jButtonRegister.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+
         javax.swing.GroupLayout ms_jPanelRegisterLayout = new javax.swing.GroupLayout(ms_jPanelRegister);
         ms_jPanelRegister.setLayout(ms_jPanelRegisterLayout);
         ms_jPanelRegisterLayout.setHorizontalGroup(
             ms_jPanelRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 496, Short.MAX_VALUE)
+            .addGroup(ms_jPanelRegisterLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(ms_jPanelRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ms_jTextFieldUsername)
+                    .addComponent(ms_jTextFieldEmail, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ms_jPasswordFieldPassword)
+                    .addComponent(ms_jPasswordFieldConfirmPassword)
+                    .addGroup(ms_jPanelRegisterLayout.createSequentialGroup()
+                        .addGroup(ms_jPanelRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ms_jLabelRegister)
+                            .addComponent(ms_jLabelUsername)
+                            .addComponent(ms_jLabeEmaill)
+                            .addComponent(ms_jLabelConfirmPassword)
+                            .addComponent(ms_jLabelPassword)
+                            .addComponent(ms_jButtonRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 356, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         ms_jPanelRegisterLayout.setVerticalGroup(
             ms_jPanelRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 422, Short.MAX_VALUE)
+            .addGroup(ms_jPanelRegisterLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ms_jLabelRegister)
+                .addGap(18, 18, 18)
+                .addComponent(ms_jLabelUsername)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ms_jTextFieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(ms_jLabeEmaill)
+                .addGap(18, 18, 18)
+                .addComponent(ms_jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addComponent(ms_jLabelPassword)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ms_jPasswordFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(ms_jLabelConfirmPassword)
+                .addGap(18, 18, 18)
+                .addComponent(ms_jPasswordFieldConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ms_jButtonRegister, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
         );
 
-        ms_jTabbedPaneMain.addTab("tab1", ms_jPanelRegister);
-        ms_jTabbedPaneMain.addTab("tab2", ms_jTabbedPaneLogin);
+        ms_jTabbedPaneMain.addTab("Rejestracja", ms_jPanelRegister);
+
+        ms_jPanelLogin.setBackground(new java.awt.Color(255, 255, 255));
+
+        ms_jLabelLogin.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        ms_jLabelLogin.setText("Logowanie");
+
+        ms_jLabelLoginEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ms_jLabelLoginEmail.setText("Email");
+
+        ms_jTextFieldLoginEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ms_jTextFieldLoginEmailActionPerformed(evt);
+            }
+        });
+
+        ms_jLabelLoginPassword.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ms_jLabelLoginPassword.setText("Password");
+
+        ms_jButtonLogin.setText("Login");
+        ms_jButtonLogin.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout ms_jPanelLoginLayout = new javax.swing.GroupLayout(ms_jPanelLogin);
+        ms_jPanelLogin.setLayout(ms_jPanelLoginLayout);
+        ms_jPanelLoginLayout.setHorizontalGroup(
+            ms_jPanelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ms_jPanelLoginLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(ms_jPanelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ms_jTextFieldLoginEmail)
+                    .addComponent(ms_jPasswordFieldLoginPassword)
+                    .addGroup(ms_jPanelLoginLayout.createSequentialGroup()
+                        .addGroup(ms_jPanelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ms_jLabelLogin)
+                            .addComponent(ms_jLabelLoginEmail)
+                            .addComponent(ms_jLabelLoginPassword)
+                            .addComponent(ms_jButtonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 363, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        ms_jPanelLoginLayout.setVerticalGroup(
+            ms_jPanelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ms_jPanelLoginLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ms_jLabelLogin)
+                .addGap(18, 18, 18)
+                .addComponent(ms_jLabelLoginEmail)
+                .addGap(18, 18, 18)
+                .addComponent(ms_jTextFieldLoginEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ms_jLabelLoginPassword)
+                .addGap(18, 18, 18)
+                .addComponent(ms_jPasswordFieldLoginPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(ms_jButtonLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                .addGap(171, 171, 171))
+        );
+
+        ms_jTabbedPaneMain.addTab("Logowanie", ms_jPanelLogin);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -62,6 +191,10 @@ public class Rejestracja_i_logowanie extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ms_jTextFieldLoginEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ms_jTextFieldLoginEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ms_jTextFieldLoginEmailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -99,8 +232,24 @@ public class Rejestracja_i_logowanie extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ms_jButtonLogin;
+    private javax.swing.JButton ms_jButtonRegister;
+    private javax.swing.JLabel ms_jLabeEmaill;
+    private javax.swing.JLabel ms_jLabelConfirmPassword;
+    private javax.swing.JLabel ms_jLabelLogin;
+    private javax.swing.JLabel ms_jLabelLoginEmail;
+    private javax.swing.JLabel ms_jLabelLoginPassword;
+    private javax.swing.JLabel ms_jLabelPassword;
+    private javax.swing.JLabel ms_jLabelRegister;
+    private javax.swing.JLabel ms_jLabelUsername;
+    private javax.swing.JPanel ms_jPanelLogin;
     private javax.swing.JPanel ms_jPanelRegister;
-    private javax.swing.JTabbedPane ms_jTabbedPaneLogin;
+    private javax.swing.JPasswordField ms_jPasswordFieldConfirmPassword;
+    private javax.swing.JPasswordField ms_jPasswordFieldLoginPassword;
+    private javax.swing.JPasswordField ms_jPasswordFieldPassword;
     private javax.swing.JTabbedPane ms_jTabbedPaneMain;
+    private javax.swing.JTextField ms_jTextFieldEmail;
+    private javax.swing.JTextField ms_jTextFieldLoginEmail;
+    private javax.swing.JTextField ms_jTextFieldUsername;
     // End of variables declaration//GEN-END:variables
 }
