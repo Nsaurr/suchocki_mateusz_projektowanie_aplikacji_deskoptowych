@@ -150,6 +150,11 @@ public class Rejestracja_i_logowanie extends javax.swing.JFrame {
 
         ms_jButtonLogin.setText("Login");
         ms_jButtonLogin.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        ms_jButtonLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ms_jButtonLoginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout ms_jPanelLoginLayout = new javax.swing.GroupLayout(ms_jPanelLogin);
         ms_jPanelLogin.setLayout(ms_jPanelLoginLayout);
@@ -317,9 +322,6 @@ public class Rejestracja_i_logowanie extends javax.swing.JFrame {
         boolean passwordEq = false;
         String temp = ms_jTextFieldEmail.getText();
         String [] splitted = temp.split("@");
-        String [] splitted2 = temp.split("?<=}.");
-        int cos = splitted2[1].length();
-        System.out.println(cos);
         boolean emai = false;
         if(temp.contains("@")&&temp.contains(".")){
             if(splitted[0].length() >=1 && splitted[1].length() >= 1){
@@ -337,11 +339,22 @@ public class Rejestracja_i_logowanie extends javax.swing.JFrame {
             passwordEq = false;
         }
         if(tempUsername== true && tempPassword == true && tempPassword1 == true && passwordEq == true && emai == true){
-            System.out.println("Wszystko git");
+            FileUtils stf = new FileUtils();
+            String text = ms_jTextFieldUsername.getText()+":"+ms_jTextFieldEmail.getText()+":"+ms_jPasswordFieldPassword.getPassword();
+            stf.saveToFIle(text);
         }else{
             System.out.println("Cos tu nie gra");
         }
     }//GEN-LAST:event_ms_jButtonRegisterActionPerformed
+
+    private void ms_jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ms_jButtonLoginActionPerformed
+        String text1 = ms_jTextFieldLoginEmail.getText();
+        char[] pass2 = ms_jPasswordFieldLoginPassword.getPassword();
+        //String tex2 = String.valueOf(pass2);
+        FileUtils stf = new FileUtils();
+        boolean zwrot = stf.readFromFile(text1, pass2);
+        System.out.print(zwrot);
+    }//GEN-LAST:event_ms_jButtonLoginActionPerformed
 
     /**
      * @param args the command line arguments
