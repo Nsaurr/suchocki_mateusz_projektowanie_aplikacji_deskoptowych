@@ -5,6 +5,10 @@
  */
 package com.mycompany.rejestracja_i_logowanie;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.Arrays;
+
 /**
  *
  * @author Dzemor
@@ -16,6 +20,8 @@ public class Rejestracja_i_logowanie extends javax.swing.JFrame {
      */
     public Rejestracja_i_logowanie() {
         initComponents();
+        addKeyListenerToUsername();
+        addKeyListnerToPassword();
     }
 
     /**
@@ -70,6 +76,11 @@ public class Rejestracja_i_logowanie extends javax.swing.JFrame {
 
         ms_jButtonRegister.setText("Rejetracja");
         ms_jButtonRegister.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        ms_jButtonRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ms_jButtonRegisterActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout ms_jPanelRegisterLayout = new javax.swing.GroupLayout(ms_jPanelRegister);
         ms_jPanelRegister.setLayout(ms_jPanelRegisterLayout);
@@ -191,10 +202,146 @@ public class Rejestracja_i_logowanie extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    private void addKeyListenerToUsername(){
+        ms_jTextFieldUsername.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char ch = e.getKeyChar();
+                String temp = ms_jTextFieldUsername.getText();
+                if(ch == KeyEvent.VK_BACK_SPACE || ch >= 65 && ch <= 90 || ch >= 97 && ch <= 122){
+                    ms_jTextFieldUsername.setEditable(true);
+                    if(temp.length() <= 20 || ch == KeyEvent.VK_BACK_SPACE){
+                        ms_jTextFieldUsername.setEditable(true);
+                    }else{
+                        ms_jTextFieldUsername.setEditable(false);
+                    }
+                }else{
+                    ms_jTextFieldUsername.setEditable(false);
+                }
+            }
 
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
+    }
+    private void addKeyListnerToPassword(){
+        ms_jPasswordFieldPassword.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char ch = e.getKeyChar();
+                if(ch == KeyEvent.VK_BACK_SPACE || ch >= 65 && ch <= 90 || ch >= 97 && ch <= 122 || ch >= 48 && ch <= 57){
+                    ms_jPasswordFieldPassword.setEditable(true);
+                }else{
+                    ms_jPasswordFieldPassword.setEditable(false);
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
+        ms_jPasswordFieldConfirmPassword.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char ch = e.getKeyChar();
+                if(ch == KeyEvent.VK_BACK_SPACE || ch >= 65 && ch <= 90 || ch >= 97 && ch <= 122 || ch >= 48 && ch <= 57){
+                    ms_jPasswordFieldConfirmPassword.setEditable(true);
+                }else{
+                    ms_jPasswordFieldConfirmPassword.setEditable(false);
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
+        ms_jPasswordFieldLoginPassword.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char ch = e.getKeyChar();
+                if(ch == KeyEvent.VK_BACK_SPACE || ch >= 65 && ch <= 90 || ch >= 97 && ch <= 122 || ch >= 48 && ch <= 57){
+                    ms_jPasswordFieldLoginPassword.setEditable(true);
+                }else{
+                    ms_jPasswordFieldLoginPassword.setEditable(false);
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
+    }
     private void ms_jTextFieldLoginEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ms_jTextFieldLoginEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ms_jTextFieldLoginEmailActionPerformed
+
+    private void ms_jButtonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ms_jButtonRegisterActionPerformed
+        boolean tempUsername = false;
+        int user = ms_jTextFieldUsername.getText().length();
+        if(user >= 2){
+           tempUsername = true;
+        }else{
+           tempUsername = false;
+        }
+        boolean tempPassword = false;
+        int pass1 = ms_jPasswordFieldPassword.getPassword().length;
+        if(pass1>= 4){
+           tempPassword = true;
+        }else{
+           tempPassword = false;
+        }
+        boolean tempPassword1 = false;
+        int pass2 = ms_jPasswordFieldConfirmPassword.getPassword().length;
+        if(pass2>= 4){
+           tempPassword1 = true;
+        }else{
+           tempPassword1 = false;
+        }
+        boolean passwordEq = false;
+        String temp = ms_jTextFieldEmail.getText();
+        String [] splitted = temp.split("@");
+        String [] splitted2 = temp.split("?<=}.");
+        int cos = splitted2[1].length();
+        System.out.println(cos);
+        boolean emai = false;
+        if(temp.contains("@")&&temp.contains(".")){
+            if(splitted[0].length() >=1 && splitted[1].length() >= 1){
+               emai = true;
+            }else{
+               emai = false;
+            }
+        }else
+        {
+            emai = false;
+        }
+        if(Arrays.equals(ms_jPasswordFieldPassword.getPassword(), ms_jPasswordFieldConfirmPassword.getPassword())){
+            passwordEq = true;
+        }else{
+            passwordEq = false;
+        }
+        if(tempUsername== true && tempPassword == true && tempPassword1 == true && passwordEq == true && emai == true){
+            System.out.println("Wszystko git");
+        }else{
+            System.out.println("Cos tu nie gra");
+        }
+    }//GEN-LAST:event_ms_jButtonRegisterActionPerformed
 
     /**
      * @param args the command line arguments
