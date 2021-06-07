@@ -8,6 +8,7 @@ package com.mycompany.rejestracja_i_logowanie;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Arrays;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -298,6 +299,7 @@ public class Rejestracja_i_logowanie extends javax.swing.JFrame {
     }//GEN-LAST:event_ms_jTextFieldLoginEmailActionPerformed
 
     private void ms_jButtonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ms_jButtonRegisterActionPerformed
+        FileUtils stf = new FileUtils();
         boolean tempUsername = false;
         int user = ms_jTextFieldUsername.getText().length();
         if(user >= 2){
@@ -322,15 +324,23 @@ public class Rejestracja_i_logowanie extends javax.swing.JFrame {
         boolean passwordEq = false;
         String temp = ms_jTextFieldEmail.getText();
         String [] splitted = temp.split("@");
-        boolean emai = false;
-        if(temp.contains("@")&&temp.contains(".")){
-            if(splitted[0].length() >=1 && splitted[1].length() >= 1){
-               emai = true;
-            }else{
+        boolean emai = true;
+      String email = ms_jTextFieldEmail.getText();
+        if(email.contains("@") && email.contains(".")){
+            if(email.charAt(0)=='@'){
                emai = false;
+            }else{
+                String host[] = email.split("@");
+                if(host[1].charAt(0)=='.'){
+                    emai = false;
+                }
+                String dot = host[1];
+                String dot2[] = dot.split("\\.");
+                if(dot2[1].isEmpty()==true){
+                    emai = false;
+                }
             }
-        }else
-        {
+        }else{
             emai = false;
         }
         if(Arrays.equals(ms_jPasswordFieldPassword.getPassword(), ms_jPasswordFieldConfirmPassword.getPassword())){
@@ -338,22 +348,34 @@ public class Rejestracja_i_logowanie extends javax.swing.JFrame {
         }else{
             passwordEq = false;
         }
+        String usersString = stf.readFromFile();
+        String[] lines = usersString.split("\\r?\\n");
         if(tempUsername== true && tempPassword == true && tempPassword1 == true && passwordEq == true && emai == true){
-            FileUtils stf = new FileUtils();
-            String text = ms_jTextFieldUsername.getText()+":"+ms_jTextFieldEmail.getText()+":"+ms_jPasswordFieldPassword.getPassword();
-            stf.saveToFIle(text);
+            JOptionPane.showMessageDialog(null, "Pomyślnie zarejstrowano: "+ms_jTextFieldUsername.getText());
+            String text = ms_jTextFieldUsername.getText()+":"+ms_jTextFieldEmail.getText()+":"+String.valueOf(ms_jPasswordFieldPassword.getPassword());
+            stf.saveToFile(text);
         }else{
             System.out.println("Cos tu nie gra");
         }
+        if(tempUsername == false)JOptionPane.showMessageDialog(null, "Nieprawidłowa nazwa użytkownika", "BŁĄD!", JOptionPane.ERROR_MESSAGE);
+        if(emai == false)JOptionPane.showMessageDialog(null, "Nieprawidłowy email", "BŁĄD!", JOptionPane.ERROR_MESSAGE);
+        if(passwordEq == false)JOptionPane.showMessageDialog(null, "Hasła nie są takie same", "BŁĄD!", JOptionPane.ERROR_MESSAGE);
+        if(tempPassword == false)JOptionPane.showMessageDialog(null, "Nieprawidłowe hasło", "BŁĄD!", JOptionPane.ERROR_MESSAGE);
+        if(tempPassword1 == false)JOptionPane.showMessageDialog(null, "Nieprawidłowe hasło", "BŁĄD!", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_ms_jButtonRegisterActionPerformed
-
     private void ms_jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ms_jButtonLoginActionPerformed
-        String text1 = ms_jTextFieldLoginEmail.getText();
-        char[] pass2 = ms_jPasswordFieldLoginPassword.getPassword();
-        //String tex2 = String.valueOf(pass2);
+        String emai = ms_jTextFieldLoginEmail.getText();
+        String pass = String.valueOf(ms_jPasswordFieldLoginPassword.getPassword());
         FileUtils stf = new FileUtils();
-        boolean zwrot = stf.readFromFile(text1, pass2);
-        System.out.print(zwrot);
+        String usersString = stf.readFromFile();
+        String[] lines = usersString.split("\\r?\\n");
+        for (String user : lines) {
+            String userSplitted[] = user.split(":");
+            if(emai.equals(userSplitted[1]) && pass.equals(userSplitted[2])){
+                JOptionPane.showMessageDialog(null, "Witaj: "+userSplitted[0]);
+                return;
+            }
+        }
     }//GEN-LAST:event_ms_jButtonLoginActionPerformed
 
     /**
